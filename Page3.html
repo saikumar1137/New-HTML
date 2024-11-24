@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        /* General Styling */
+        body {
+            margin: 0;
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(to right, #FAD0C4, #FFD1FF);
+        }
+
+        header {
+            background-color: #8A2BE2;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-family: 'Pacifico', cursive;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #FFD700;
+        }
+
+        /* Hero Section - Carousel */
+        .hero {
+            position: relative;
+            max-width: 100%;
+            height: 70vh;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            object-fit: cover;
+            height: 100%;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 2rem;
+            z-index: 100;
+            border-radius: 50%;
+        }
+
+        .arrow-left {
+            left: 15px;
+        }
+
+        .arrow-right {
+            right: 15px;
+        }
+
+        /* Wedding Info Section */
+        section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        #wedding-info {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+        }
+
+        footer {
+            background-color: #8A2BE2;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-family: 'Pacifico', cursive;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Wedding of Sai Kumar & Sai Harshitha</h1>
+    <nav>
+        <a href="#hero">Home</a>
+        <a href="#wedding-info">Wedding Details</a>
+    </nav>
+</header>
+
+<!-- Hero Section with Carousel -->
+<section id="hero" class="hero">
+    <div class="carousel-container">
+        <div class="carousel-images">
+            <img src="file:///D:/Images/IMG20230929132037.jpg" alt="Wedding Photo 1">
+            <img src="file:///D:/Images/IMG20230929132037.jpg" alt="Wedding Photo 2">
+            <img src="file:///D:/Images/IMG20230929132037.jpg" alt="Wedding Photo 3">
+            <img src="file:///D:/Images/IMG20230929132037.jpg" alt="Wedding Photo 4">
+        </div>
+        <button class="arrow arrow-left" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="arrow arrow-right" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+</section>
+
+<!-- Wedding Details -->
+<section id="wedding-info">
+    <h2>Wedding Details</h2>
+    <p><strong>Date:</strong> February 8, 2025</p>
+    <p><strong>Time:</strong> 10:45 AM</p>
+    <p><strong>Location:</strong> <a href="https://maps.app.goo.gl/GF362Nu5kDecWJ769" target="_blank">KSR Function Hall, Kurnool, Andhra Pradesh</a></p>
+</section>
+
+<footer>
+    <p>We can't wait to celebrate this special day with you!</p>
+</footer>
+
+<script>
+    let currentIndex = 0;
+    const imagesContainer = document.querySelector('.carousel-images');
+    const images = document.querySelectorAll('.carousel-images img');
+
+    // Function to navigate slides
+    function moveSlide(direction) {
+        currentIndex += direction;
+        if (currentIndex < 0) {
+            currentIndex = images.length - 1; // Loop back to last image
+        }
+        if (currentIndex >= images.length) {
+            currentIndex = 0; // Loop back to first image
+        }
+        imagesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    // Auto-slide every 3 seconds
+    setInterval(() => moveSlide(1), 3000);
+</script>
+
+</body>
+</html>
